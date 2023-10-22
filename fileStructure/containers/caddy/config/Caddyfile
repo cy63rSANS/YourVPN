@@ -1,0 +1,3 @@
+https://your.domainname.com {
+        reverse_proxy * http://headscale:8080
+}
