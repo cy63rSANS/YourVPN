@@ -3,7 +3,7 @@ groups:
   - docker: [netadmin]
 users:
   - name: headscale
-      gecos headscale
+      gecos: headscale
       home-dir: /var/lib/headscale
       primary_group: headscale
       shell: /usr/sbin/nologin
