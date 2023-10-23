@@ -25,7 +25,7 @@ resource azurerm_network_security_group nsg_vpnhost {
 		 destination_address_prefixes = ["172.20.0.200"]
 	}
 
-	depends_on = [azurerm_virtual_machine.VPNhost]
+	depends_on = [azurerm_virtual_machine.vpnhost]
 }
 resource azurerm_subnet_network_security_group_association sNet-Asoc1 {
 	subnet_id = "${azurerm_subnet.VPNint.id}"

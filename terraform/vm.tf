@@ -9,7 +9,7 @@ resource "random_string" "vmpassword" {
   upper            = true
 }
 
-resource azurerm_network_interface VPNhost {
+resource azurerm_network_interface vpnhost {
 	 name = "VPNhost"
 	 location = var.Location
 	 resource_group_name = var.ResG
@@ -29,12 +29,12 @@ resource azurerm_network_interface VPNhost {
 	} 
 }
 
-resource "azurerm_virtual_machine" "webserver" {
+resource "azurerm_virtual_machine" "vpnhost" {
   name                = "VPNhost"
   resource_group_name = var.ResG
   location            = var.Location
   vm_size             = "Standard_B2s"
-  network_interface_ids =  [azurerm_network_interface.VPHhost.id]
+  network_interface_ids =  [azurerm_network_interface.vpnhost.id]
   
   os_profile_linux_config {
     disable_password_authentication = false
