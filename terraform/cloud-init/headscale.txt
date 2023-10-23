@@ -1,10 +1,10 @@
 #cloud-config
 users:
   - name: headscale
-    gecos headscale
-    home-dir: /var/lib/headscale
-    primary_group: headscale
-    shell: /usr/sbin/nologin
+      gecos headscale
+      home-dir: /var/lib/headscale
+      primary_group: headscale
+      shell: /usr/sbin/nologin
 package update: true
 package_upgrade: true
 packages:
