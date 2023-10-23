@@ -1,5 +1,5 @@
 locals {
-  userdata = base64encode(file("./cloudinit/headscale.txt"))
+  userdata = base64encode(file("./cloud-init/headscale.txt"))
 }
 
 resource "random_string" "vmpassword" {
