@@ -1,11 +1,13 @@
 #cloud-config
+groups:
+  - docker: [netadmin]
 users:
   - name: headscale
       gecos headscale
       home-dir: /var/lib/headscale
       primary_group: headscale
       shell: /usr/sbin/nologin
-package update: true
+package_update: true
 package_upgrade: true
 packages:
   - docker
@@ -16,8 +18,6 @@ runcmd:
   - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
   - sudo apt update
   - sudo apt install tailscale
-  - sudo groupadd docker
-  - sudo usermod -aG docker netadmin
   - sudo docker network create reverseproxy-nw
   - sudo mkdir -p /source
   - cd /source
