@@ -1,0 +1,37 @@
+sudo apt update && sudo apt upgrade --assume-yes
+apt upgrade 
+sudo apt install docker docker-compose wireguard -y
+curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
+curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+sudo apt update
+sudo apt install tailscale -y
+useradd --create-home --home-dir /var/lib/headscale --system -g headscale --shell /usr/sbin/nologin headscale
+sudo groupadd headscale
+sudo usermod -aG docker netadmin
+newgrp docker
+sudo docker network create reverseproxy-nw
+sudo mkdir -p /source
+cd /source
+sudo git clone https://github.com/cy63rSANS/YourVPN
+sudo cp -r YourVPN/fileStructure/containers /containers
+sudo chown -R netadmin:docker /containers
+sudo echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+sudo echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
+
+
+
+IN CONTAINERS/CADDY: docker-compose up -d
+IN CONTAINERS/HEADSCALE: docker-compose up -d
+
+
+PiHole:
+It's worth noting that you can free up port 53 by simply uncommenting DNSStubListener and setting it to no in /etc/systemd/resolved.conf. The other steps are for enabling a DNS server - without it, your system will not be able to resolve any domain names, so you won't be able to visit websites in web browser, etc.
+
+1. Edit /etc/systemd/resolved.conf
+DNSStubListener=no
+
+sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+reboot
+
+IN CONTAINERS/PIHOLE: docker-compose up -d
