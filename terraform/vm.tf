@@ -1,5 +1,5 @@
 locals {
-  userdata = base64encode(file("./cloud-init/headscaleBasic.txt"))
+  userdata = base64encode(file("./terraform/cloud-init/headscaleBasic.txt"))
 }
 
 resource "random_string" "vmpassword" {
@@ -65,4 +65,8 @@ resource "azurerm_virtual_machine" "vpnhost" {
 }
 output "vm_password" {
   value = random_string.vmpassword.id
+}
+
+output "Public_ip" {
+  value = azurerm_public_ip.VPNpip.ip_address
 }
