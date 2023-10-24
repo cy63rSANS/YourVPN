@@ -66,7 +66,3 @@ resource "azurerm_virtual_machine" "vpnhost" {
 output "vm_password" {
   value = random_string.vmpassword.id
 }
-
-output "Public_ip" {
-  value = azurerm_virtual_machine.vpnhost.public_ip_address_id
-}
