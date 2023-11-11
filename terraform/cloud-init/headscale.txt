@@ -1,13 +1,13 @@
 #cloud-config
-groups:
-  - docker: [netadmin]
-  - headscale
 users:
   - name: headscale
       gecos: headscale
       home-dir: /var/lib/headscale
       primary_group: headscale
       shell: /usr/sbin/nologin
+groups:
+  - docker: [netadmin]
+  - headscale
 package_update: true
 package_upgrade: true
 packages:
