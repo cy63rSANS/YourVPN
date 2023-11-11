@@ -1,13 +1,7 @@
 #cloud-config
-users:
-  - name: headscale
-      gecos: headscale
-      home-dir: /var/lib/headscale
-      primary_group: headscale
-      shell: /usr/sbin/nologin
 groups:
   - docker: [netadmin]
-  - headscale
+  - headscaleusers:
 package_update: true
 package_upgrade: true
 packages:
@@ -15,9 +9,7 @@ packages:
   - docker-compose
   - wireguard
 runcmd:
-  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
-  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
-  - sudo apt update
+  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-arch>  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d>  - sudo apt update
   - sudo apt install tailscale -y
   - sudo docker network create reverseproxy-nw
   - sudo mkdir -p /source
