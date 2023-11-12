@@ -8,8 +8,25 @@ packages:
   - docker
   - docker-compose
   - wireguard
+write_files:
+  - path: /home/netadmin/config.sh
+    permissions: "0775"
+    content: |
+      #!/bin/bash
+      sed -i s/YOURDOMAIN.COM/"$1"/g /containers/caddy/Caddyfile
+      sed -i s/YOURDOMAIN.COM/"$1"/g /containers/headscale/config/config.yaml
+      sed -i s/YOURSECRET/"$2"/g /containers/pihole/docker-compose.yaml
+      sudo cd /containers/caddy
+      sudo docker-compose up -d
+      sudo cd /containers/headscale
+      sudo docker-compose up -d
+      sudo cd /containers/pihole
+      sudo docker-compose up -d
+    owner: workshopadmin:workshopadmin
 runcmd:
-  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-arch>  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d>  - sudo apt update
+  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-arch>  
+  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d> 
+  - sudo apt update
   - sudo apt install tailscale -y
   - sudo docker network create reverseproxy-nw
   - sudo mkdir -p /source
@@ -20,3 +37,4 @@ runcmd:
   - sudo echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
   - sudo echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
   - sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
+  - reboot
