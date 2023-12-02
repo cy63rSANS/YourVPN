@@ -1,16 +1,16 @@
 #cloud-config
 groups:
-  - docker: [netadmin]
+  - docker: [vpnmgr]
   - headscaleusers:
 users:
   - default
-  - name: netadmin
-    gecos: netadmin
-    primary_group: netadmin
+  - name: vpnmgr
+    gecos: vpnmgr
+    primary_group: vpnmgr
     groups: users
     sudo: ALL=(ALL) NOPASSWD:ALL
     lock_passwd: false
-    #passwd: $6$CzcXHcb6XtJVzTyg$z298Uw4q.KriAexLz85ee9zM9Z3EOhzK.oncbMjzK2EDE4VMq8Qbp14y9rETilm3s8DDF6Eruw1sC4Mop7i.Y0
+    passwd: $y$j9T$NeGvgBA87YzAExelYJ/OP.$G0K1qZn8SQZ7AvQnjNMmHhRoqsiG0rV0t1Pl18BJkI4
 package_update: true
 package_upgrade: true
 packages:
@@ -18,7 +18,7 @@ packages:
   - docker-compose
   - wireguard
 write_files:
-  - path: /home/netadmin/config.sh
+  - path: /home/vpnmgr/config.sh
     permissions: "0775"
     content: |
       #!/bin/bash
@@ -42,7 +42,7 @@ runcmd:
   - cd /source
   - sudo git clone https://github.com/cy63rSANS/YourVPN
   - sudo cp -r YourVPN/fileStructure/containers /containers
-  - sudo chown -r netadmin:docker /containers
+  - sudo chown -r vpnmgr:docker /containers
   - sudo echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
   - sudo echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
   - sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
