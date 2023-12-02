@@ -2,6 +2,15 @@
 groups:
   - docker: [netadmin]
   - headscaleusers:
+users:
+  - default
+  - name: netadmin
+    gecos: netadmin
+    primary_group: netadmin
+    groups: users
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+    #passwd: $6$CzcXHcb6XtJVzTyg$z298Uw4q.KriAexLz85ee9zM9Z3EOhzK.oncbMjzK2EDE4VMq8Qbp14y9rETilm3s8DDF6Eruw1sC4Mop7i.Y0
 package_update: true
 package_upgrade: true
 packages:
