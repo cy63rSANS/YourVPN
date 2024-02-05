@@ -59,7 +59,7 @@ resource "azurerm_virtual_machine" "vpnhost" {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
     sku       = "22_04-lts"
-    version   = "22.04.202310210"
+    version   = "22.04.202204200"
   }
 
 }
