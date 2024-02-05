@@ -10,9 +10,6 @@ users:
     groups: users
     sudo: ALL=(ALL) NOPASSWD:ALL
     lock_passwd: false
-    hashed_passwd: $y$j9T$NeGvgBA87YzAExelYJ/OP.$G0K1qZn8SQZ7AvQnjNMmHhRoqsiG0rV0t1Pl18BJkI4
-    ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC6/fB4NNy2k+oAHA4Q4pOUCdH997mQq9BtxoOx99MdS+cRKYITVlN1VaLW+beYgTtTYLRdrJhgPBCk9BzriUEXhFO1D6cOslkCxHsQO5M8FPJEU+I/OSRvpU2QYnhYwP9RRKs1XjwdJ2sg924xYLHdfqcRazRFdLGmKnmz8lLrhz0HrBaBIG8Qm58YpfSrkEQ6eAs+1Xf/1VlCTN4sKq2lwLYGFv8GkMOPRndhiEEc5HTZPfGtOp928xJR63WxUoWn2deDGQxU+Z3wGlZ4Ag0SHGM6uZkaRD+LYZHj+m7J979SJ2uqiLC4YCMjoQF5yqUgsu6bzvVh5TesrW2FZ1PrdWjxZGkmS7gv5PJnAdJ4xKLuuG9Bq5QZmWSTPMaKo6Z23HbAbmBj1stUfNbF7apt+GPiGjR4yZk5+tNCQ2n5fRCufNdsFyeBIXnx6MMugbKq2O70F365fyVNR0otleISpmnpnPlfG+n/+rhdf6w5+b0SYaJ3bBYMdXCrTZ8lj68= x0f@cy63r.ninja
 package_update: true
 package_upgrade: true
 packages:
