@@ -10,7 +10,7 @@ users:
     groups: users
     sudo: ALL=(ALL) NOPASSWD:ALL
     lock_passwd: false
-    passwd: $y$j9T$NeGvgBA87YzAExelYJ/OP.$G0K1qZn8SQZ7AvQnjNMmHhRoqsiG0rV0t1Pl18BJkI4
+    hashed_passwd: $y$j9T$NeGvgBA87YzAExelYJ/OP.$G0K1qZn8SQZ7AvQnjNMmHhRoqsiG0rV0t1Pl18BJkI4
 package_update: true
 package_upgrade: true
 packages:
