@@ -1,7 +1,4 @@
 #cloud-config
-groups:
-  - docker: [vpnmgr, netadmin]
-  - headscaleusers:
 users:
   - default
   - name: vpnmgr
@@ -10,6 +7,9 @@ users:
     groups: users
     sudo: ALL=(ALL) NOPASSWD:ALL
     lock_passwd: false
+groups:
+  - docker: [vpnmgr, netadmin]
+  - headscaleusers:
 package_update: true
 package_upgrade: true
 packages:
