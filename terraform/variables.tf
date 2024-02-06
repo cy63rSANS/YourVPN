@@ -1,7 +1,4 @@
 # SVernon@SANS.org
-###################################################################################################################################
-# Define used variables here - DON'T actually set values here, they will be ignored!!
-###################################################################################################################################
 
 variable "Location" {
   default = "northeurope"
@@ -9,7 +6,7 @@ variable "Location" {
 
 
 variable "ResG" {
-  default = "VPNoD"
+  default = "MyVPN"
 }
 
 
