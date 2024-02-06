@@ -15,12 +15,9 @@ write_files:
       #!/bin/bash
       sed -i s/YOURDOMAIN.COM/"$1"/g /containers/caddy/Caddyfile
       sed -i s/YOURDOMAIN.COM/"$1"/g /containers/headscale/config/config.yaml
-      sed -i s/YOURSECRET/"$2"/g /containers/pihole/docker-compose.yaml
-      sudo cd /containers/caddy
+      cd /containers/caddy
       sudo docker-compose up -d
-      sudo cd /containers/headscale
-      sudo docker-compose up -d
-      sudo cd /containers/pihole
+      cd /containers/headscale
       sudo docker-compose up -d
     owner: netadmin:netadmin
 runcmd:
