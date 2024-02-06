@@ -1,7 +1,7 @@
 # YourVPN based on Headscale, Wireguard and tailscale client
 
-# SANS @night | MANCHESTER
-#### Simon Vernon, SANS 2023
+# SANS @night | London February 2024
+#### Simon Vernon, SANS 2024
 
 ### Prerequisites
 1. An Azure account
