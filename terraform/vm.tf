@@ -3,10 +3,16 @@ locals {
 }
 
 resource "random_string" "vmpassword" {
-  length           = 14
+  length           = 15
   special          = true
   numeric          = true
   upper            = true
+  override_special = "!@$%^&(){}[]"
+  min_upper        = 2
+  min_lower        = 2
+  min_numeric      = 2
+  min_special      = 2
+
 }
 
 resource azurerm_network_interface vpnhost {
