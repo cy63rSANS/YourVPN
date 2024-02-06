@@ -9,7 +9,7 @@ packages:
   - docker-compose
   - wireguard
 write_files:
-  - path: /home/vpnmgr/config.sh
+  - path: /home/netadmin/config.sh
     permissions: "0775"
     content: |
       #!/bin/bash
@@ -22,10 +22,10 @@ write_files:
       sudo docker-compose up -d
       sudo cd /containers/pihole
       sudo docker-compose up -d
-    owner: vpnmgr:vpnmgr
+    owner: netadmin:netadmin
 runcmd:
-  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-arch>  
-  - curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d> 
+  - sudo curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-arch>  
+  - sudo curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d> 
   - sudo apt update
   - sudo apt install tailscale -y
   - sudo docker network create reverseproxy-nw
