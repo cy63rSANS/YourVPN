@@ -68,9 +68,10 @@ noise:
 # client.
 # IPv6: https://github.com/tailscale/tailscale/blob/22ebb25e833264f58d7c3f534a8b166894a89536/net/tsaddr/tsaddr.go#LL81C52-L81C71
 # IPv4: https://github.com/tailscale/tailscale/blob/22ebb25e833264f58d7c3f534a8b166894a89536/net/tsaddr/tsaddr.go#L33
-ip_prefixes:
-  - fd7a:115c:a1e0::/48
-  - 100.64.0.0/10
+prefixes:
+  v6: fd7a:115c:a1e0::/48
+  v4: 100.64.0.0/10
+  allocation: sequential
 
 # DERP is a relay system that Tailscale uses when a direct
 # connection cannot be established.
@@ -246,12 +247,13 @@ dns:
   # `base_domain` must be a FQDN, without the trailing dot.
   # The FQDN of the hosts will be
   # `hostname.base_domain` (e.g., _myhost.example.com_).
-  base_domain: YOURDOMAIN.COM
+  base_domain: VPNoD.INT
 
   # List of DNS servers to expose to clients.
   nameservers:
     global:
       - 1.1.1.1
+      - 8.8.8.8
       - 1.0.0.1
       - 2606:4700:4700::1111
       - 2606:4700:4700::1001
@@ -284,15 +286,6 @@ dns:
   #
   #   # you can also put it in one line
   #   - { name: "prometheus.myvpn.example.com", type: "A", value: "100.64.0.3" }
-
-  # DEPRECATED
-  # Use the username as part of the DNS name for nodes, with this option enabled:
-  # node1.username.example.com
-  # while when this is disabled:
-  # node1.example.com
-  # This is a legacy option as Headscale has have this wrongly implemented
-  # while in upstream Tailscale, the username is not included.
-  use_username_in_magic_dns: false
 
 
 # Unix socket used for the CLI to connect without authentication

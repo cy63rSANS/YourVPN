@@ -1,0 +1,7 @@
+
+IaC/azure/.terraform.lock.hcl
+IaC/azure/.terraform/providers/registry.terraform.io/hashicorp/azurerm/4.0.0/linux_amd64/LICENSE.txt
+IaC/azure/.terraform/providers/registry.terraform.io/hashicorp/azurerm/4.0.0/linux_amd64/terraform-provider-azurerm_v4.0.0_x5
+IaC/azure/.terraform/providers/registry.terraform.io/hashicorp/random/3.6.3/linux_amd64/LICENSE.txt
+IaC/azure/.terraform/providers/registry.terraform.io/hashicorp/random/3.6.3/linux_amd64/terraform-provider-random_v3.6.3_x5
+IaC/azure/terraform.tfstate

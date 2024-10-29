@@ -26,7 +26,7 @@ runcmd:
   - cd /source
   - sudo git clone https://github.com/cy63rSANS/YourVPN
   - sudo cp -r YourVPN/fileStructure/containers /containers
-  - sudo chown -r vpnmgr:docker /containers
+  - sudo chown -r netadmin:docker /containers
   - sudo echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
   - sudo echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
   - sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
