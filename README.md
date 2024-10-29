@@ -1,7 +1,7 @@
 # YourVPN based on Headscale, Wireguard and tailscale client
-
-# SANS @night | London February 2024
 #### Simon Vernon, SANS 2024
+
+# Development currently broken due to updates from Headscale, Will update shortly. 
 
 ### Prerequisites
 1. An Azure account
